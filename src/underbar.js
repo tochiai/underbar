@@ -307,12 +307,9 @@ var _ = {};
     return function() {
       var arg = arguments[0] 
       if(arg in computed){
-        console.log("if");
         return computed[arg];
       }
       else {
-        console.log("else");
-        console.log(arg)
         computed[arg] = func.apply(this, arguments);
       } 
         return computed[arg];
