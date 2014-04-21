@@ -154,7 +154,7 @@ var _ = {};
   _.invoke = function(collection, functionOrKey, args) {
 	  if (typeof ( functionOrKey ) === "string") {
 	  	  return _.map(collection, function(item) {
-			  return item[functionOrKey](args);
+			  return item[functionOrKey].apply(item, args);
 		  });
 	  }
 	else {
@@ -213,6 +213,8 @@ var _ = {};
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
+	var callback;
+	iterator === undefined ? callback = _.identity : callback = iterator;
   };
 
 
